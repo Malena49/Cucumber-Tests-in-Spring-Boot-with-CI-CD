@@ -19,11 +19,16 @@ To run the tests locally, you can use the following command:
 This will run the Cucumber tests using JUnit Platform on Chrome and dev environment and generate a report in the `target/failsafe-reports` directory.
 
 To run the tests in parallel on Edge and qa environment, you can use the following command:
-``mvn clean verify -Pqa,edge``
+``mvn clean verify -P qa,edge,local``
 
-To run the tests locally, you can use the following command:
-``mvn clean verify -Premote``
+To run the tests remotely, you can use the following command:
+``mvn clean verify -P dev,chrome,remote``
 This will run the tests on Chrome and dev environment in parallel using Selenium Grid.
+
+### Using WebDriver Factory
+
+This repository also uses WebDriver Factory to manage the WebDriver instances. The factory creates a new WebDriver instance for each scenario and closes it after the scenario has completed. This allows for better control and management of the WebDriver instances.
+
 
 ## GitHub Actions Workflow
 
