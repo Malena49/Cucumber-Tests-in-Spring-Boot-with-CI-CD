@@ -24,6 +24,7 @@ jobs:
         with:
           java-version: 17
           distribution: 'temurin'
+          quiet: true
       - name: Check containers
         run: docker ps -a
 
