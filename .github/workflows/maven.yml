@@ -29,6 +29,3 @@ jobs:
 
       - name: Run Cucumber tests
         run: mvn clean verify -P dev,chrome,remote
-
-      - name: Stop Selenium container
-        run: docker stop selenium
