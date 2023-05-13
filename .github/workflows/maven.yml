@@ -25,23 +25,11 @@ jobs:
           java-version: 17
           distribution: 'temurin'
 
-      - name: Check containers
-        run: docker ps -a
-
       - name: Run Cucumber tests
         run: mvn clean verify -P dev,chrome,remote --quiet
-        
-      - name: Check file
-        run: ls
         
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-         name: my-artifact
-         path: ./target/failsafe-reports
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.ACCESS_TOKEN }}
-          publish_dir: ./target/failsafe-reports/Cucumber.html
+         name: Cucumber report
+         path: ./target/failsafe-reports/cucumber
