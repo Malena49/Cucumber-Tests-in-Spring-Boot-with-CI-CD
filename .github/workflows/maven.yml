@@ -24,9 +24,9 @@ jobs:
         with:
           java-version: 17
           distribution: 'temurin'
-          quiet: true
+
       - name: Check containers
         run: docker ps -a
 
       - name: Run Cucumber tests
-        run: mvn clean verify -P dev,chrome,remote
+        run: mvn clean verify -P dev,chrome,remote --quiet
