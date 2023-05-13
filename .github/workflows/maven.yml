@@ -30,6 +30,10 @@ jobs:
 
       - name: Run Cucumber tests
         run: mvn clean verify -P dev,chrome,remote --quiet
+        
+      - name: Check file
+        run: ls
+        
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
