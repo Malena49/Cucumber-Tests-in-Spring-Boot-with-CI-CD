@@ -27,18 +27,6 @@ jobs:
       - name: Check containers
         run: docker ps -a
 
-      - name: Start Selenium container
-        run: docker start selenium
-
-      - name: Check containers
-        run: docker ps -a
-
-      - name: Start Selenium container
-        run: docker start selenium
-
-      - name: Check containers
-        run: docker ps -a
-
       - name: Run Cucumber tests
         run: mvn clean verify -P dev,chrome,remote
 
