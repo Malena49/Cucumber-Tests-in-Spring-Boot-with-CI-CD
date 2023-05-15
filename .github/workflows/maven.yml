@@ -36,5 +36,5 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: Cucumber report
+          name: Cucumber report ${{ matrix.environment }} ${{ matrix.browser }}
           path: ./target/failsafe-reports/cucumber
