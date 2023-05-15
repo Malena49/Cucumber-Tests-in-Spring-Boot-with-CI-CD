@@ -16,6 +16,9 @@ To run the tests in this repository, you will need the following:
 To run the tests locally, you can use the following command:
 ``mvn clean verify``
 
+To build project without running test, you can use the following command:
+``mvn clean verify -DskipTests``
+
 This will run the Cucumber tests using JUnit Platform on Chrome and dev environment and generate a report in the `target/failsafe-reports` directory.
 
 To run the tests in parallel on Edge and qa environment, you can use the following command:
@@ -32,20 +35,22 @@ This repository also uses WebDriver Factory to manage the WebDriver instances. T
 
 ## GitHub Actions Workflow
 
-The repository includes a GitHub Actions workflow that runs the tests on push and pull request events. The workflow is defined in the `.github/workflows/ci.yml` file and uses the `actions/checkout` action to check out the repository, and the `actions/setup-java` action to set up the Java environment.
+This repository contains a workflow file that automates the execution of Cucumber tests using GitHub Actions. The workflow is triggered whenever a push event occurs on the `main` branch. It utilizes a matrix strategy to run tests on different browsers and in the `dev` environment.
 
-The workflow then runs the tests using the `maven-verify` action, which is a community action that runs the `mvn verify` command. The action is configured to run the tests on both Chrome and Firefox in parallel using Selenium Grid.
+The workflow file `cucumber-test.yml` defines a single job named "Test" that runs on the latest version of Ubuntu. It sets up a Selenium service using Docker images for the specified browser, exposing port 4444.
 
-## Environment Variables
+### Job Configuration
 
-The following environment variables are used in the GitHub Actions workflow:
+The job configuration includes the following steps:
 
-- `CI_SERVER`: The name of the CI server (set to `GitHub Actions` by default).
-- `SELENIUM_HUB_URL`: The URL of the Selenium Grid hub (set to `http://localhost:4444/wd/hub` by default).
-- `TEST_ENV`: The environment to run the tests in (set to `dev` by default).
-- `BROWSER`: The browser to run the tests on (set to `chrome` by default).
+1. **Checkout code**: This step checks out the repository code using the `actions/checkout` action.
 
-These environment variables can be customized to fit your specific needs.
+2. **Set up JDK**: This step sets up the Java Development Kit (JDK) using the `actions/setup-java` action. It specifies the JDK version as 17 and uses the 'temurin' distribution.
+
+3. **Run Cucumber tests**: This step executes the Cucumber tests using the Maven command `mvn clean verify`. It utilizes the values from the matrix strategy (`matrix.environment` and `matrix.browser`) as command-line parameters. The tests are run in a remote configuration.
+
+4. **Upload a Build Artifact**: This step uploads a build artifact named "Cucumber report" using the `actions/upload-artifact` action. The artifact consists of the Cucumber test report generated in the `./target/failsafe-reports/cucumber` directory.
+
 
 ## Conclusion
 
