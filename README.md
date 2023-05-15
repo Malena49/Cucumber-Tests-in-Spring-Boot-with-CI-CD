@@ -1,5 +1,5 @@
 # Cucumber-Tests-in-Spring-Boot-with-CI-CD
-
+[![Cucumber Test](https://github.com/Malena49/Cucumber-Tests-in-Spring-Boot-with-CI-CD/actions/workflows/maven.yml/badge.svg)](https://github.com/Malena49/Cucumber-Tests-in-Spring-Boot-with-CI-CD/actions/workflows/maven.yml)
 
 This repository contains a sample Spring Boot application that uses Cucumber and JUnit Platform for testing, along with a GitHub Actions workflow for continuous integration and delivery (CI/CD). The tests can be run in two different environments and multiple browsers in parallel.
 
