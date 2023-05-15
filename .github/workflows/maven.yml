@@ -1,39 +1,3 @@
-#name: Cucumber Test
-#
-#on:
-#  push:
-#    branches:
-#      - main
-#
-#jobs:
-#  test:
-#    runs-on: ubuntu-latest
-#
-#    services:
-#      selenium:
-#        image: selenium/standalone-chrome:latest
-#        ports:
-#          - 4444:4444
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v3
-#
-#      - name: Set up JDK
-#        uses: actions/setup-java@v3
-#        with:
-#          java-version: 17
-#          distribution: 'temurin'
-#
-#      - name: Run Cucumber tests
-#        run: mvn clean verify -P dev,chrome,remote --quiet
-#
-#      - name: Upload a Build Artifact
-#        uses: actions/upload-artifact@v3.1.2
-#        with:
-#         name: Cucumber report
-#         path: ./target/failsafe-reports/cucumber
-
 name: Cucumber Test
 
 on:
